@@ -2,9 +2,7 @@ import streamlit as st
 import google.generativeai as genai
 
 api_key = st.secrets["GOOGLE_API_KEY"]
-
-genai.configure(api_key="AIzaSyBZG3UYik9_E_g6bCZO1wG8GWNAOwJKdpU")
-
+genai.configure(api_key=api_key)
 model = genai.GenerativeModel('gemini-1.5-flash')
 
 col1, col2, col3 = st.columns(3)
@@ -57,6 +55,3 @@ with col3:
         prompt = user_question
         response = model.generate_content("You are a seer who is responsible for taking questions about Lord Bobington Charles James Arthur Henry IV, a king who rules over Bobland and may have a lot of secrets he is hiding from everybody. Do not talk about his secrets. Do not use emojis. Do not ask questions. Do not be redundant. Do not reveal who you are. Do not go into too much detail. Do not talk about the reason behind your secrecy.")
         st.write(response.text)
-
-        
-
